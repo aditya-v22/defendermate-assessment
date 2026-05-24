@@ -17,7 +17,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { user, logout } = useAuth();
 
-  if (!user || pathname === '/login') return null;
+  if (!user) return null;
 
   return (
     <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-30">
