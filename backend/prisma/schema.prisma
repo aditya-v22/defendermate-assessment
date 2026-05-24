@@ -1,0 +1,33 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Alert {
+  id            String   @id @default(uuid())
+  timestamp     DateTime
+  title         String
+  severity      String
+  severityRank  Int
+  status        String
+  category      String
+  source        String
+  affectedAsset String
+  assignee      String?
+  description   String
+  rawEvent      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
