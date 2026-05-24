@@ -9,10 +9,11 @@ import { JwtStrategy } from './jwt.strategy';
   imports: [
     PassportModule,
     JwtModule.registerAsync({
-      useFactory: () => ({
-        secret: process.env.JWT_SECRET ?? 'secret',
-        signOptions: { expiresIn: '24h' },
-      }),
+      useFactory: () => {
+        const secret = process.env.JWT_SECRET;
+        if (!secret) throw new Error('JWT_SECRET environment variable is not set');
+        return { secret, signOptions: { expiresIn: '24h' } };
+      },
     }),
   ],
   controllers: [AuthController],
