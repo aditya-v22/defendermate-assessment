@@ -13,7 +13,9 @@ export class AlertsService {
 
     const where = this.buildWhereClause(dto);
 
-    const orderBy = { [sortBy]: sortOrder };
+    const orderBy = sortBy === 'severity'
+      ? { severityRank: sortOrder }
+      : { timestamp: sortOrder };
 
     const [data, total] = await Promise.all([
       this.prisma.alert.findMany({
