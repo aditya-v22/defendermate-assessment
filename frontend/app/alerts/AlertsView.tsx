@@ -8,7 +8,7 @@ import AlertsTable from '@/components/alerts/AlertsTable';
 import Pagination from '@/components/alerts/Pagination';
 
 export default function AlertsView() {
-  const { filters, setFilters } = useAlertFilters();
+  const { filters, setFilters, toggleSort } = useAlertFilters();
   const { data, isLoading } = useAlerts(filters);
   const searchParams = useSearchParams();
   const selectedAlertId = searchParams.get('alertId');
@@ -32,7 +32,7 @@ export default function AlertsView() {
             alerts={data?.data ?? []}
             isLoading={isLoading}
             selectedId={selectedAlertId}
-            onSort={(field) => setFilters({ sortBy: field })}
+            onSort={toggleSort}
             sortBy={filters.sortBy}
             sortOrder={filters.sortOrder}
           />
