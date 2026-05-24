@@ -1,6 +1,6 @@
 # DefenderMate
 
-SOC alerts triage dashboard. NestJS + Prisma + SQLite backend, Next.js 15 frontend, pnpm monorepo.
+SOC alerts triage dashboard. NestJS + Prisma + SQLite backend, Next.js 15 frontend, pnpm monorepo. Deployable on Railway.
 
 ## Quick start
 
